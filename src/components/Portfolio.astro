@@ -1,23 +1,25 @@
 <section id="portfolio" class="portfolio">
-    <!-- SECCIÓN CORTOS -->
+    
     <h3>Contenido Corto (9:16)</h3>
-    <div class="carousel-wrapper">
+    <!-- Añadimos ID específico aquí -->
+    <div class="carousel-wrapper" id="carousel-shorts-wrapper">
         <button class="control-btn prev" id="prev-shorts">←</button>
-        <div class="carousel vertical" id="carousel-shorts">
+        <div class="carousel" id="carousel-shorts">
             <slot name="shorts" />
         </div>
         <button class="control-btn next" id="next-shorts">→</button>
     </div>
 
-    <!-- SECCIÓN LARGOS -->
     <h3>Contenido Largo (16:9)</h3>
-    <div class="carousel-wrapper">
+    <!-- Añadimos ID específico aquí -->
+    <div class="carousel-wrapper" id="carousel-longs-wrapper">
         <button class="control-btn prev" id="prev-longs">←</button>
-        <div class="carousel horizontal" id="carousel-longs">
+        <div class="carousel" id="carousel-longs">
             <slot name="longs" />
         </div>
         <button class="control-btn next" id="next-longs">→</button>
     </div>
+
 </section>
 
 <script>
