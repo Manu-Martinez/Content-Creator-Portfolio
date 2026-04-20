@@ -1,0 +1,11 @@
+---
+const tools = ["Premiere Pro", "After Effects", "DaVinci Resolve", "Final Cut", "Audition", "Photoshop"];
+---
+<section id="tools" class="tools-section">
+    <h3>Herramientas</h3>
+    <div class="tools-container">
+        {tools.map((tool) => (
+            <div class="tool-card">{tool}</div>
+        ))}
+    </div>
+</section>

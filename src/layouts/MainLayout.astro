@@ -1,0 +1,24 @@
+---
+import '../styles/global.css';
+const { title } = Astro.props;
+---
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">AUDIO<span>VISUAL</span></div>
+        <nav>
+            <a href="#portfolio">Trabajos</a>
+            <a href="#tools">Herramientas</a>
+            <a href="#contact">Contacto</a>
+        </nav>
+    </header>
+    <main>
+        <slot /> <!-- Aquí se inyectará el contenido de cada página -->
+    </main>
+</body>
+</html>

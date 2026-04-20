@@ -1,77 +1,41 @@
 ---
-
+import MainLayout from '../layouts/MainLayout.astro';
+import Tools from '../components/Tools.astro';
+import Portfolio from '../components/Portfolio.astro';
 ---
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productor Audiovisual | Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Fuente moderna rápida -->
-    <link href="https://googleapis.com" rel="stylesheet">
-</head>
-<body>
-
-    <header class="navbar">
-        <div class="logo">AUDIO<span>VISUAL</span></div>
-        <nav>
-            <a href="#portfolio">Trabajos</a>
-            <a href="#tools">Herramientas</a>
-            <a href="#contact">Contacto</a>
-        </nav>
-    </header>
-
+<MainLayout title="Productor Audiovisual | Portafolio">
+    
     <section class="hero">
         <div class="profile-img">
-            <img src="https://placeholder.com" alt="Foto del Productor">
+            <img src="/foto-perfil.jpg" alt="Productor">
         </div>
-        <h1>Tu Nombre Aquí</h1>
-        <p class="description">Productor de contenidos audiovisuales especializado en narrativa visual y edición dinámica para formatos digitales.</p>
+        <h1>Nombre del Productor</h1>
+        <p class="description">Especialista en narrativa visual y edición de alto impacto.</p>
     </section>
 
     <hr>
 
-    <section id="tools" class="tools-section">
-        <h3>Herramientas</h3>
-        <div class="tools-container">
-            <div class="tool-card">Premiere Pro</div>
-            <div class="tool-card">After Effects</div>
-            <div class="tool-card">DaVinci Resolve</div>
-            <div class="tool-card">Final Cut</div>
-            <div class="tool-card">Audition</div>
-            <div class="tool-card">Photoshop</div>
-        </div>
-    </section>
+    <Tools />
 
-    <section id="portfolio" class="portfolio">
-        <h3>Contenido Corto (9:16)</h3>
-        <div class="carousel vertical">
-            <div class="video-placeholder v-card">Video 1</div>
-            <div class="video-placeholder v-card">Video 2</div>
-            <div class="video-placeholder v-card">Video 3</div>
-            <div class="video-placeholder v-card">Video 4</div>
-        </div>
-
-        <h3>Contenido Largo (16:9)</h3>
-        <div class="carousel horizontal">
-            <div class="video-placeholder h-card">Video 1</div>
-            <div class="video-placeholder h-card">Video 2</div>
-            <div class="video-placeholder h-card">Video 3</div>
-            <div class="video-placeholder h-card">Video 4</div>
-        </div>
-    </section>
+    <Portfolio>
+        <div slot="shorts" class="video-placeholder v-card">Short 1</div>
+        <div slot="shorts" class="video-placeholder v-card">Short 2</div>
+        <!-- ... más videos ... -->
+        
+        <div slot="longs" class="video-placeholder h-card">Video Largo 1</div>
+        <div slot="longs" class="video-placeholder h-card">Video Largo 2</div>
+    </Portfolio>
 
     <section id="contact" class="contact-form">
         <h3>¿Tienes un proyecto?</h3>
         <form>
-            <input type="text" placeholder="Nombre" required>
-            <input type="email" placeholder="Email" required>
-            <textarea placeholder="Cuéntame tu idea..." rows="4"></textarea>
+            <input type="text" placeholder="Nombre" required />
+            <input type="email" placeholder="Email" required />
+            <textarea placeholder="Mensaje..." rows="4"></textarea>
             <button type="submit" class="btn-grad">Enviar Mensaje</button>
         </form>
     </section>
 
-</body>
-</html>
+</MainLayout>
+
