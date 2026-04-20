@@ -9,3 +9,52 @@
         <slot name="longs" />
     </div>
 </section>
+
+
+<style>
+  /* Añadimos botones simples para el ejemplo */
+  .carousel-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .control-btn {
+    background: var(--card-bg);
+    color: white;
+    border: 1px solid var(--accent-blue);
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+</style>
+
+<section id="portfolio" class="portfolio">
+    <div class="carousel-header">
+        <h3>Contenido Corto</h3>
+        <div class="carousel-controls">
+            <button class="control-btn" id="prev-shorts">←</button>
+            <button class="control-btn" id="next-shorts">→</button>
+        </div>
+    </div>
+    
+    <div class="carousel vertical" id="carousel-shorts">
+        <slot name="shorts" />
+    </div>
+</section>
+
+<script>
+  // JavaScript Puro para mover el carrusel
+  const container = document.getElementById('carousel-shorts');
+  const btnNext = document.getElementById('next-shorts');
+  const btnPrev = document.getElementById('prev-shorts');
+
+  if (container && btnNext && btnPrev) {
+    btnNext.addEventListener('click', () => {
+      container.scrollBy({ left: 200, behavior: 'smooth' });
+    });
+
+    btnPrev.addEventListener('click', () => {
+      container.scrollBy({ left: -200, behavior: 'smooth' });
+    });
+  }
+</script>
