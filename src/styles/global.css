@@ -107,16 +107,14 @@ h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; }
 .portfolio { padding: 40px 5%; }
 
 .carousel {
-	width: 90%;          /* No ocupes el 100% para que no se pegue */
-    margin: 0 auto;      /* Centra el carrusel */
-    padding-left: 20px;  /* Empuja el contenido hacia la derecha */
+    width: 100%;             /* Usamos el 100% para que el scroll llegue a los bordes */
     display: flex;
     overflow-x: auto;
     gap: 16px;
-    padding: 20px 0;
+    padding: 20px 5%;        /* 5% coincide con tu navbar y secciones */
     scroll-snap-type: x mandatory; 
     scroll-behavior: smooth;
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: none; 
     -webkit-overflow-scrolling: touch;
 }
 
@@ -129,7 +127,7 @@ h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; }
     align-items: center;
     justify-content: center;
     border-radius: 16px;
-    scroll-snap-align: center;
+    scroll-snap-align: start; /* CAMBIADO: de center a start */
     transition: 0.3s;
     border: 2px solid transparent;
 }
