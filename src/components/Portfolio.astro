@@ -1,60 +1,94 @@
-<section id="portfolio" class="portfolio">
-    <h3>Contenido Corto (9:16)</h3>
-    <div class="carousel vertical">
-        <slot name="shorts" />
-    </div>
-
-    <h3>Contenido Largo (16:9)</h3>
-    <div class="carousel horizontal">
-        <slot name="longs" />
-    </div>
-</section>
-
-
-<style>
-  /* Añadimos botones simples para el ejemplo */
-  .carousel-controls {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
-  }
-  .control-btn {
-    background: var(--card-bg);
-    color: white;
-    border: 1px solid var(--accent-blue);
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-</style>
+---
+/* No necesitas importar JS aquí, Astro lo maneja en la etiqueta <script> de abajo */
+---
 
 <section id="portfolio" class="portfolio">
+    <!-- SECCIÓN CORTOS -->
     <div class="carousel-header">
-        <h3>Contenido Corto</h3>
+        <h3>Contenido Corto (9:16)</h3>
         <div class="carousel-controls">
             <button class="control-btn" id="prev-shorts">←</button>
             <button class="control-btn" id="next-shorts">→</button>
         </div>
     </div>
-    
     <div class="carousel vertical" id="carousel-shorts">
         <slot name="shorts" />
     </div>
+
+    <!-- SECCIÓN LARGOS -->
+    <div class="carousel-header">
+        <h3>Contenido Largo (16:9)</h3>
+        <div class="carousel-controls">
+            <button class="control-btn" id="prev-longs">←</button>
+            <button class="control-btn" id="next-longs">→</button>
+        </div>
+    </div>
+    <div class="carousel horizontal" id="carousel-longs">
+        <slot name="longs" />
+    </div>
 </section>
 
-<script>
-  // JavaScript Puro para mover el carrusel
-  const container = document.getElementById('carousel-shorts');
-  const btnNext = document.getElementById('next-shorts');
-  const btnPrev = document.getElementById('prev-shorts');
-
-  if (container && btnNext && btnPrev) {
-    btnNext.addEventListener('click', () => {
-      container.scrollBy({ left: 200, behavior: 'smooth' });
-    });
-
-    btnPrev.addEventListener('click', () => {
-      container.scrollBy({ left: -200, behavior: 'smooth' });
-    });
+<style>
+  .carousel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 10px;
   }
+  
+  .carousel-controls {
+    display: flex;
+    gap: 10px;
+  }
+
+  .control-btn {
+    background: var(--card-bg);
+    color: white;
+    border: 1px solid var(--accent-blue);
+    padding: 5px 15px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s;
+  }
+
+  .control-btn:hover {
+    background: var(--accent-blue);
+    color: white;
+  }
+
+  /* Aseguramos que el contenedor de carrusel oculte el scroll pero permita moverlo */
+  .carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 20px;
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  .carousel::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+</style>
+
+<script>
+  // Función reutilizable para manejar carruseles
+  function setupCarousel(idContainer, idPrev, idNext) {
+    const container = document.getElementById(idContainer);
+    const prevBtn = document.getElementById(idPrev);
+    const nextBtn = document.getElementById(idNext);
+
+    if (container && prevBtn && nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        container.scrollBy({ left: 300, behavior: 'smooth' });
+      });
+      prevBtn.addEventListener('click', () => {
+        container.scrollBy({ left: -300, behavior: 'smooth' });
+      });
+    }
+  }
+
+  // Ejecutar para ambos carruseles
+  setupCarousel('carousel-shorts', 'prev-shorts', 'next-shorts');
+  setupCarousel('carousel-longs', 'prev-longs', 'next-longs');
 </script>
