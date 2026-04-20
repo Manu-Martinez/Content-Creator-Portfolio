@@ -158,3 +158,30 @@ input:focus { border-bottom-color: var(--accent-green); }
 .btn-grad:hover { opacity: 0.9; }
 
 hr { border: 0; height: 1px; background: #334155; margin: 40px 0; }
+
+/* Configuración del contenedor del carrusel */
+.carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    padding: 10px 0;
+    
+    /* Propiedades de ajuste magnético */
+    scroll-snap-type: x mandatory; 
+    scroll-behavior: smooth;
+    
+    /* Esconde la barra de scroll en móviles para que parezca app */
+    -webkit-overflow-scrolling: touch;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none; /* Esconde scrollbar en Chrome/Safari */
+}
+
+/* Configuración de las tarjetas de video */
+.video-placeholder {
+    scroll-snap-align: center; /* El video se imanta al centro */
+    flex-shrink: 0;
+    border-radius: 16px; /* Bordes más curvos tipo iOS/Android */
+}
+
