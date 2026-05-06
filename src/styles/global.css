@@ -199,6 +199,12 @@ h3 { margin-bottom: 20px; text-align: center; color: var(--accent-blue); }
     height: 100%;
 }
 
+.v-card,
+.h-card {
+    overflow: hidden;
+}
+
+
 /* Botones de control */
 .control-btn {
     position: absolute;
