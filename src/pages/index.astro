@@ -17,7 +17,7 @@ const horizontalVideos = [
     { id: 'ZV95iNLEexM', title: 'Prueba edición de video 4: Video musical' },
     { id: 'J0_c82HLznY', title: 'Prueba edición Motion Graphics CBX 1000' },
 	{ id: 'Uf9ZFxlDy9A', title: '(Oboeshoestwos) Elden Ring meets WW1 in TRENCH TALES (Highlight edit)' },
-	{ id: 'tu_id_6', title: '(Recorte FranMentor) 🍺🍺Catando HyperViolent' },
+	{ id: 'Y3YFrWSE9EI', title: '(Recorte FranMentor) 🍺🍺Catando HyperViolent' },
 ];
 ---
 
@@ -47,30 +47,30 @@ const horizontalVideos = [
 
     <Portfolio>
         <!-- VIDEOS VERTICALES -->
-        {verticalVideos.map((video) => (
-            <div slot="shorts" class="v-card">
-                <iframe 
-                    src={`https://youtube.com{video.id}`} 
-                    title={video.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen
-                    loading="lazy">
-                </iframe>
-            </div>
-        ))}
-        
-        <!-- VIDEOS HORIZONTALES -->
-        {horizontalVideos.map((video) => (
-            <div slot="longs" class="h-card">
-                <iframe 
-                    src={`https://youtube.com{video.id}`} 
-                    title={video.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen
-                    loading="lazy">
-                </iframe>
-            </div>
-        ))}
+    {verticalVideos.map((video) => (
+        <div slot="shorts" class="v-card">
+            <iframe 
+                src={`https://youtube.com{video.id}`} 
+                title={video.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen
+                loading="lazy">
+            </iframe>
+        </div>
+    ))}
+    
+    <!-- VIDEOS HORIZONTALES -->
+    {horizontalVideos.map((video) => (
+        <div slot="longs" class="h-card">
+            <iframe 
+                src={`https://youtube.com{video.id}`} 
+                title={video.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen
+                loading="lazy">
+            </iframe>
+        </div>
+    ))}
     </Portfolio>
 
     <section id="contact" class="contact-form">
