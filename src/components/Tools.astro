@@ -11,10 +11,13 @@ const tools = [
 
 
 <section id="tools" class="tools-section">
-    <h3>Herramientas</h3>
+     <h3>Herramientas</h3>
     <div class="tools-container">
         {tools.map((tool) => (
-            <div class="tool-card">{tool}</div>
+            <div class="tool-card" style={`--tool-color: ${tool.color}`}>
+                <img src={tool.icon} alt={tool.name} class="tool-icon" />
+                <span>{tool.name}</span>
+            </div>
         ))}
     </div>
 </section>
