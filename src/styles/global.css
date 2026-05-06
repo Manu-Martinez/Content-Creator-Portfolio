@@ -113,26 +113,20 @@ h1 { font-size: clamp(1.8rem, 5vw, 3rem); line-height: 1.1; }
 
 h3 { margin-bottom: 20px; text-align: center; color: var(--accent-blue); }
 
-
-
-
 /* --- CARRUSEL VERTICAL (CORTOS) --- */
 /* Carrusel cortos — ancho limitado al tamaño de un Short */
+
 #carousel-shorts-wrapper {
-	width: 320px;
-    max-width: 320px;
-	height: 120px;
+    width: 320px;
     margin: 0 auto 80px auto;
-	position: relative;
+    position: relative;
 }
 
-/* Carrusel largos — ancho generoso 16:9 */
 #carousel-longs-wrapper {
     width: 100%;
-    max-width: 800px;
-	height: 1200px;
+    max-width: 900px;
     margin: 0 auto 60px auto;
-	position: relative;
+    position: relative;
 }
 
 .carousel {
@@ -155,54 +149,61 @@ h3 { margin-bottom: 20px; text-align: center; color: var(--accent-blue); }
 }
 
 /* Tarjeta vertical — proporción 9:16 real */
-.v-card { 
-    width: 280px; 
-    height: 498px;   /* 280 × (16/9) ≈ 498 */
-    background: var(--card-bg); 
-    border-radius: 16px; 
+/* Vertical 9:16 — el padding-bottom es la única forma de forzar el iframe */
+.v-card {
+    width: 280px;
+    position: relative;
+    padding-bottom: 497.78px; /* altura fija equivalente a 9:16 de 280px */
+    background: #334155;
+    border-radius: 16px;
     border: 2px solid transparent;
     overflow: hidden;
     transition: border-color 0.3s;
     flex-shrink: 0;
 }
 
-/* Tarjeta horizontal — proporción 16:9 real */
-.h-card { 
+.v-card iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    aspect-ratio: 16 / 9; 
-    background: var(--card-bg); 
-    border-radius: 16px; 
-    border: 2px solid transparent;
-    overflow: hidden;
-    transition: border-color 0.3s;
+    height: 100%;
+    border: none;
 }
+
 
 .v-card:hover, 
 .h-card:hover { 
     border-color: var(--accent-blue); 
 }
 
-/* iframe ocupa todo el card */
-.v-card { 
-    width: 280px; 
-    aspect-ratio: 9 / 16;  /* ← reemplaza el height: 500px */
-    background: #334155; 
-    border-radius: 16px; 
-    transition: 0.3s;
+/* Horizontal 16:9 */
+.h-card {
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%; /* proporción 16:9 */
+    background: #334155;
+    border-radius: 16px;
     border: 2px solid transparent;
     overflow: hidden;
+    transition: border-color 0.3s;
 }
 
 .h-card iframe {
-    aspect-ratio: 16 / 9;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    border: none;
 }
 
-.v-card,
-.h-card {
-    overflow: hidden;
+.v-card:hover,
+.h-card:hover {
+    border-color: var(--accent-blue);
 }
+
+
 
 
 /* Botones de control */
@@ -322,7 +323,8 @@ hr { border: 0; height: 1px; background: #334155; margin: 20px 10%; }
 
 /* 7. MEDIA QUERIES */
 @media (max-width: 600px) {
-    .v-card { width: 200px; height: 355px; }
+    #carousel-shorts-wrapper { width: 220px; }
+    .v-card { width: 200px; padding-bottom: 355.56px; }
     .h-card { width: 90%; }
     .control-btn { width: 35px; height: 35px; }
     .control-btn.prev { left: 5px; }
