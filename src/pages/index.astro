@@ -46,31 +46,31 @@ const horizontalVideos = [
     <Tools />
 
     <Portfolio>
-     <!-- VIDEOS VERTICALES -->
-    {verticalVideos.map((video) => (
-        <div slot="shorts" class="v-card">
-            <iframe 
-                src={`https://youtube.com{video.id}`} 
-                title={video.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen
-                loading="lazy">
-            </iframe>
-        </div>
-    ))}
-    
-    <!-- VIDEOS HORIZONTALES -->
-    {horizontalVideos.map((video) => (
-        <div slot="longs" class="h-card">
-            <iframe 
-                src={`https://youtube.com{video.id}`} 
-                title={video.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen
-                loading="lazy">
-            </iframe>
-        </div>
-    ))}
+       <!-- VIDEOS VERTICALES -->
+{verticalVideos.map((video) => (
+    <div slot="shorts" class="v-card">
+        <iframe 
+            src={`https://www.youtube.com/embed/${video.id}`}
+            title={video.title}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen
+            loading="lazy">
+        </iframe>
+    </div>
+))}
+
+<!-- VIDEOS HORIZONTALES -->
+{horizontalVideos.map((video) => (
+    <div slot="longs" class="h-card">
+        <iframe 
+            src={`https://www.youtube.com/embed/${video.id}`}
+            title={video.title}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen
+            loading="lazy">
+        </iframe>
+    </div>
+))}
     </Portfolio>
 
     <section id="contact" class="contact-form">
