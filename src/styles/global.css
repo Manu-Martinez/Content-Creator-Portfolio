@@ -111,129 +111,79 @@ h1 { font-size: clamp(1.8rem, 5vw, 3rem); line-height: 1.1; }
     align-items: center; /* Centra todo el contenido del portfolio */
 }
 
+h3 { margin-bottom: 20px; text-align: center; color: var(--accent-blue); }
+
 .carousel-wrapper {
     position: relative;
     display: flex;
     align-items: center;
     width: 100%;
-    margin: 0 auto 80px auto; /* Centra el bloque y da espacio abajo */
+    margin: 0 auto 80px auto;
 }
+
 
 /* --- CARRUSEL VERTICAL (CORTOS) --- */
-/* Forzamos que este contenedor sea más estrecho */
+/* Carrusel cortos — ancho limitado al tamaño de un Short */
 #carousel-shorts-wrapper {
-    max-width: 300px; /* Un poco más del 30% para dar aire a los lados del video */
+    max-width: 320px;
+    margin: 0 auto 80px auto;
 }
 
-#carousel-shorts-wrapper .v-card {
-    width: 250px;
-    height: 445px;
-}
-
-/* --- CARRUSEL HORIZONTAL (LARGOS) --- */
-/* Asegura que el contenedor de los largos no se desborde */
-/* --- AJUSTE PARA VIDEOS LARGOS --- */
-/* 1. Aseguramos que el wrapper mande sobre el tamaño */
+/* Carrusel largos — ancho generoso 16:9 */
 #carousel-longs-wrapper {
     width: 100%;
-    max-width: 800px; /* Tamaño máximo del video en pantalla */
+    max-width: 800px;
     margin: 0 auto 60px auto;
-    position: relative;
 }
-
-/* 2. El carrusel DEBE tener el ancho exacto del wrapper */
-#carousel-longs-wrapper .carousel {
-    display: flex;
-    overflow: hidden; /* Corta CUALQUIER cosa que asome */
-    width: 100%;
-    gap: 0 !important; /* Elimina cualquier espacio entre videos */
-}
-
-/* 3. El placeholder DEBE ser un bloque rígido del 100% */
-#carousel-longs-wrapper .video-placeholder {
-    /* Estas 3 líneas obligan a que el slide sea exactamente del ancho del wrapper */
-    flex: 0 0 100% !important; 
-    min-width: 100% !important;
-    max-width: 100% !important;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    scroll-snap-align: center;
-}
-
-/* 4. La tarjeta ocupa todo el espacio del placeholder */
-#carousel-longs-wrapper .h-card {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    background: #1e293b;
-    border-radius: 16px;
-    /* Evitamos que márgenes internos empujen contenido */
-    margin: 0; 
-}
-
-
 
 .carousel {
     display: flex;
-    overflow-x: hidden;
+    overflow: hidden;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     width: 100%;
 }
 
-/* Slides — vuelven al 100% del carrusel */
 .video-placeholder {
     flex: 0 0 100%;
     min-width: 100%;
+    max-width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     scroll-snap-align: center;
-    padding: 10px 20px;  /* ← el padding lateral da la sensación de margen entre slides */
+    padding: 20px 0;
 }
 
-/* Sin gap en el carrusel (el padding del placeholder lo simula) */
-.carousel {
-    display: flex;
-    overflow-x: hidden;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    width: 100%;
-    gap: 0;
-}
-
-/* Tarjetas cortos — tamaño real de un Short de YouTube */
-.v-card {
-    width: 315px;
-    height: 560px;
-    display: block;
-    border-radius: 16px;
+/* Tarjeta vertical — proporción 9:16 real */
+.v-card { 
+    width: 280px; 
+    height: 498px;   /* 280 × (16/9) ≈ 498 */
+    background: var(--card-bg); 
+    border-radius: 16px; 
     border: 2px solid transparent;
     overflow: hidden;
     transition: border-color 0.3s;
     flex-shrink: 0;
 }
 
-/* Tarjetas largos — 16:9 real, ancho generoso */
-.h-card {
+/* Tarjeta horizontal — proporción 16:9 real */
+.h-card { 
     width: 100%;
-    max-width: 780px;
-    aspect-ratio: 16 / 9;
-    display: block;
-    border-radius: 16px;
+    aspect-ratio: 16 / 9; 
+    background: var(--card-bg); 
+    border-radius: 16px; 
     border: 2px solid transparent;
     overflow: hidden;
     transition: border-color 0.3s;
 }
 
-.v-card:hover,
-.h-card:hover {
-    border-color: var(--accent-blue);
+.v-card:hover, 
+.h-card:hover { 
+    border-color: var(--accent-blue); 
 }
 
-/* iframe llena el card por completo */
+/* iframe ocupa todo el card */
 .v-card iframe,
 .h-card iframe {
     display: block;
@@ -242,25 +192,29 @@ h1 { font-size: clamp(1.8rem, 5vw, 3rem); line-height: 1.1; }
     border: none;
 }
 
-.v-card:hover, .h-card:hover { border-color: var(--accent-blue); }
-
-/* Botones de Control */
+/* Botones de control */
 .control-btn {
     position: absolute;
-    z-index: 50;
+    z-index: 100;
     top: 50%;
     transform: translateY(-50%);
     background: rgba(30, 41, 59, 0.9);
     color: white;
     border: 1px solid var(--accent-blue);
-    width: 45px; height: 45px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: 0.3s;
 }
 
+.control-btn:hover { background: var(--accent-blue); }
 .control-btn.prev { left: -20px; }
 .control-btn.next { right: -20px; }
+
 
 /* 6. FORMULARIO */
 .contact-form { padding: 80px 5%; background: #0b1120; text-align: center; }
@@ -355,10 +309,13 @@ hr { border: 0; height: 1px; background: #334155; margin: 20px 10%; }
 
 /* 7. MEDIA QUERIES */
 @media (max-width: 600px) {
+    
+@media (max-width: 600px) {
+    .v-card { width: 200px; height: 355px; }
+    .h-card { width: 90%; }
+    .control-btn { width: 35px; height: 35px; }
     .control-btn.prev { left: 5px; }
     .control-btn.next { right: 5px; }
-    .h-card { width: 90%; }
-    .v-card { width: 180px; height: 320px; }
 	 /* Ajuste de redes en el Hero */
 
 	.hero {
