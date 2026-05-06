@@ -183,17 +183,20 @@ h3 { margin-bottom: 20px; text-align: center; color: var(--accent-blue); }
 }
 
 /* iframe ocupa todo el card */
-.v-card iframe,
-.h-card iframe {
-    display: block;
-    width: 100%;
-    height: 100%;
-    border: none;
+.v-card { 
+    width: 280px; 
+    aspect-ratio: 9 / 16;  /* ← reemplaza el height: 500px */
+    background: #334155; 
+    border-radius: 16px; 
+    transition: 0.3s;
+    border: 2px solid transparent;
+    overflow: hidden;
 }
 
-.v-card,
-.h-card {
-    overflow: hidden;
+.h-card iframe {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    height: 100%;
 }
 
 /* Botones de control */
