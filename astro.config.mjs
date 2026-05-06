@@ -3,9 +3,7 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
 	
-  site: 'https://github.io', 
-  
-  
+  site: 'https://Manu-Martinez.github.io', 
   base: '/Content-Creator-Portfolio', 
   devToolbar: {
     enabled: false,
