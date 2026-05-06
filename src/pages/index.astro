@@ -2,7 +2,26 @@
 import MainLayout from '../layouts/MainLayout.astro';
 import Tools from '../components/Tools.astro';
 import Portfolio from '../components/Portfolio.astro';
+
+// LISTA DE VIDEOS (Agrega aquí todos los que quieras)
+const verticalVideos = [
+    { id: 'SOVPB-obdvM', title: 'Group B de rally - Potencia y Peligro' },
+    { id: 'CsuTlhaIEcQ', title: 'Prueba de edición 7: The Circel of Drift entrevista' },
+    { id: 'Rl0pl9a4NyI', title: 'Prueba de edición de video 2: Publicidad Falsa' },
+	{ id: 'Tw66S8UnYG8', title: 'Prueba de edición 9: Gameplay Short' },
+	{ id: '4FsTK93foaA', title: '(Franmentor 2)🍺🍺 Catando HyperViolent(Short 2)' },
+];
+
+const horizontalVideos = [
+    { id: '3C9AzuzxMYs', title: 'Al Agua Pato - Cortometraje (Corte final)' },
+    { id: 'ZV95iNLEexM', title: 'Prueba edición de video 4: Video musical' },
+    { id: 'J0_c82HLznY', title: 'Prueba edición Motion Graphics CBX 1000' },
+	{ id: 'Uf9ZFxlDy9A', title: '(Oboeshoestwos) Elden Ring meets WW1 in TRENCH TALES (Highlight edit)' },
+	{ id: 'tu_id_6', title: '(Recorte FranMentor) 🍺🍺Catando HyperViolent' },
+];
 ---
+
+
 
 <MainLayout title="Productor Audiovisual | Portafolio">
     
@@ -10,7 +29,7 @@ import Portfolio from '../components/Portfolio.astro';
         <div class="profile-img">
             <img src="/foto-perfil.jpg" alt="Productor">
         </div>
-        <h1>Nombre del Productor</h1>
+        <h1>Darío Alberto Martínez</h1>
         <p class="description">Especialista en narrativa visual y edición de alto impacto.</p>
     </section>
 
@@ -27,12 +46,31 @@ import Portfolio from '../components/Portfolio.astro';
     <Tools />
 
     <Portfolio>
-        <div slot="shorts" class="video-placeholder v-card">Short 1</div>
-        <div slot="shorts" class="video-placeholder v-card">Short 2</div>
-        <!-- ... más videos ... -->
+        <!-- VIDEOS VERTICALES -->
+        {verticalVideos.map((video) => (
+            <div slot="shorts" class="v-card">
+                <iframe 
+                    src={`https://youtube.com{video.id}`} 
+                    title={video.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                    loading="lazy">
+                </iframe>
+            </div>
+        ))}
         
-        <div slot="longs" class="video-placeholder h-card">Video Largo 1</div>
-        <div slot="longs" class="video-placeholder h-card">Video Largo 2</div>
+        <!-- VIDEOS HORIZONTALES -->
+        {horizontalVideos.map((video) => (
+            <div slot="longs" class="h-card">
+                <iframe 
+                    src={`https://youtube.com{video.id}`} 
+                    title={video.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                    loading="lazy">
+                </iframe>
+            </div>
+        ))}
     </Portfolio>
 
     <section id="contact" class="contact-form">
