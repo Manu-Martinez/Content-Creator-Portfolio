@@ -152,9 +152,9 @@ h1 { font-size: clamp(1.8rem, 5vw, 3rem); line-height: 1.1; }
 /* 3. El placeholder DEBE ser un bloque rígido del 100% */
 #carousel-longs-wrapper .video-placeholder {
     /* Estas 3 líneas obligan a que el slide sea exactamente del ancho del wrapper */
-    flex: 0 0 100%; 
-    min-width: 100%;
-    max-width: 100%;
+    flex: 0 0 100% !important; 
+    min-width: 100% !important;
+    max-width: 100% !important;
     
     display: flex;
     justify-content: center;
@@ -183,32 +183,49 @@ h1 { font-size: clamp(1.8rem, 5vw, 3rem); line-height: 1.1; }
     width: 100%;
 }
 
+/* Slides — vuelven al 100% del carrusel */
 .video-placeholder {
     flex: 0 0 100%;
+    min-width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     scroll-snap-align: center;
-    padding: 10px 0;
+    padding: 10px 20px;  /* ← el padding lateral da la sensación de margen entre slides */
 }
 
-.v-card,
-.h-card {
+/* Sin gap en el carrusel (el padding del placeholder lo simula) */
+.carousel {
+    display: flex;
+    overflow-x: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    width: 100%;
+    gap: 0;
+}
+
+/* Tarjetas cortos — tamaño real de un Short de YouTube */
+.v-card {
+    width: 315px;
+    height: 560px;
     display: block;
     border-radius: 16px;
     border: 2px solid transparent;
-    overflow: hidden;        /* Clip del border-radius al iframe */
+    overflow: hidden;
     transition: border-color 0.3s;
+    flex-shrink: 0;
 }
 
-.v-card {
-    width: 250px;
-    height: 445px;
-}
-
+/* Tarjetas largos — 16:9 real, ancho generoso */
 .h-card {
     width: 100%;
+    max-width: 780px;
     aspect-ratio: 16 / 9;
+    display: block;
+    border-radius: 16px;
+    border: 2px solid transparent;
+    overflow: hidden;
+    transition: border-color 0.3s;
 }
 
 .v-card:hover,
@@ -216,7 +233,7 @@ h1 { font-size: clamp(1.8rem, 5vw, 3rem); line-height: 1.1; }
     border-color: var(--accent-blue);
 }
 
-/* El iframe llena el contenedor por completo */
+/* iframe llena el card por completo */
 .v-card iframe,
 .h-card iframe {
     display: block;
