@@ -48,7 +48,7 @@ const horizontalVideos = [
     <Portfolio>
        <!-- VIDEOS VERTICALES -->
 {verticalVideos.map((video) => (
-    <div slot="shorts" class="v-card">
+    <div slot="shorts" class="video-placeholder">
         <iframe 
             src={`https://www.youtube.com/embed/${video.id}`}
             title={video.title}
@@ -63,7 +63,7 @@ const horizontalVideos = [
 
 <!-- VIDEOS HORIZONTALES -->
 {horizontalVideos.map((video) => (
-    <div slot="longs" class="h-card">
+    <div slot="longs" class="video-placeholder">
         <iframe 
             src={`https://www.youtube.com/embed/${video.id}`}
             title={video.title}
